@@ -1,23 +1,28 @@
 function processData(input) {
     var countTable = {};
     var max = 0;
-    input = input.split('\n')
-    .map(function(el){
-        countTable[el[0]] = 0;
-        return el.split(' ')
-    })
-    .map(function(el){
-        el[0] = parseInt(el);
+    input = input.split('\n');
+    input.shift();
+    input = input.map(function(el, ind){
+        var elAr = el.split(' ');
+        elAr[0] = parseInt(elAr[0]);
+        countTable[elAr[0]] = 0;
+        if(ind < input.length / 2){
+            elAr[2] = "first";
+        }else{
+            elAr[2] = "second";
+        }
+        return elAr
+    });
+    input.forEach(function(el){
         countTable[el[0]] ++;
+
         if(el[0] > max){
             max = el[0];
         }
-        return el
     });
-    var numItems = input.shift();
-
     var subTotal = 0;
-    for(var i=0;i<max;i++){
+    for(var i=0;i<=max;i++){
         var oldCount = countTable[i];
         countTable[i] = subTotal;
         subTotal += oldCount;
@@ -28,18 +33,9 @@ function processData(input) {
         countTable[el[0]] ++;
     })
 
-    var firstHalf = {};
-    var secondHalf = {};
-    for(var i=0;i<input.length;i++){
-        if(i < input.length / 2){
-            firstHalf[input[i][1]] = true;
-        }else{
-            secondHalf[input[i][1]] = false;
-        }
-    };
     var resultArray = [];
     results.forEach(function(el){
-        if(firstHalf[el[1]]){
+        if(el[2] === "first"){
             resultArray.push('-')
         }else{
             resultArray.push(el[1])
