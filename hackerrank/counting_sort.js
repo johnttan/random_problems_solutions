@@ -10,13 +10,6 @@ function processData(input) {
     var numItems = input.shift();
 
     function merge(arr1, arr2){
-        //console.log(arr1, arr2)
-        if(arr1.length === 0){
-            return arr2;
-        }
-        if(arr2.length === 0){
-            return arr1;
-        }
         var resultArr = [];
         var point1 = 0;
         var point2 = 0
@@ -38,17 +31,18 @@ function processData(input) {
                 resultArr.push(arr1[i])
             }
         }
-        //console.log(resultArr);
         return resultArr;
     };
-    function sort(arr){
-        if(arr.length === 1 || arr.length === 0){
-            return arr;
+    function sort(arr, left, right){
+
+        if(left === right){
+            return [arr[left]];
         }
-        var pivot = Math.floor(arr.length / 2);
-        return merge(sort(arr.slice(0, pivot)), sort(arr.slice(pivot, arr.length)))
+        var pivot = left + Math.floor((right - left) / 2);
+        return merge(sort(arr, left, pivot), sort(arr, pivot+1, right))
     };
-    var results = sort(input);
+    var results = sort(input, 0, input.length-1);
+
     var firstHalf = {};
     var secondHalf = {};
     for(var i=0;i<input.length;i++){
