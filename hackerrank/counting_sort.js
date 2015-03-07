@@ -1,47 +1,32 @@
 function processData(input) {
+    var countTable = {};
+    var max = 0;
     input = input.split('\n')
     .map(function(el){
+        countTable[el[0]] = 0;
         return el.split(' ')
     })
     .map(function(el){
         el[0] = parseInt(el);
+        countTable[el[0]] ++;
+        if(el[0] > max){
+            max = el[0];
+        }
         return el
     });
     var numItems = input.shift();
 
-    function merge(arr1, arr2){
-        var resultArr = [];
-        var point1 = 0;
-        var point2 = 0
-        while(point1 < arr1.length && point2 < arr2.length){
-            if(arr1[point1][0] <= arr2[point2][0]){
-                resultArr.push(arr1[point1]);
-                point1 ++;
-            }else{
-                resultArr.push(arr2[point2]);
-                point2 ++;
-            }
-        }
-        if(point1 >= arr1.length){
-            for(var i=point2;i<arr2.length;i++){
-                resultArr.push(arr2[i])
-            }
-        } else{
-            for(var i=point1;i<arr1.length;i++){
-                resultArr.push(arr1[i])
-            }
-        }
-        return resultArr;
+    var subTotal = 0;
+    for(var i=0;i<max;i++){
+        var oldCount = countTable[i];
+        countTable[i] = subTotal;
+        subTotal += oldCount;
     };
-    function sort(arr, left, right){
-
-        if(left === right){
-            return [arr[left]];
-        }
-        var pivot = left + Math.floor((right - left) / 2);
-        return merge(sort(arr, left, pivot), sort(arr, pivot+1, right))
-    };
-    var results = sort(input, 0, input.length-1);
+    var results = [];
+    input.forEach(function(el){
+        results[countTable[el[0]]] = el;
+        countTable[el[0]] ++;
+    })
 
     var firstHalf = {};
     var secondHalf = {};
