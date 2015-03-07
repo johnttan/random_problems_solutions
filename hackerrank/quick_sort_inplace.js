@@ -1,40 +1,52 @@
+function qsort(items, left, right){
+  if((right - left) <= 1){
+    return;
+  }
+  var pivot = partition(items, left, right);
+  qsort(items, left, pivot-1);
+  qsort(items, pivot, right);
+  return items;
+};
+
+function swap(items, left, right){
+  var temp = items[left];
+  items[left] = items[right];
+  items[right] = temp;
+};
+
+function partitionOne(items, left, right){
+  var pivotInd = right;
+  for(var i=left;i<right;i++){
+    if(items[left] < items[pivotInd]){
+      swap(items, left, i);
+      left++;
+    }
+  };
+  swap(items, pivotInd, left);
+  return left;
+};
+
+function partitionTwo(items, left, right){
+  var pivotInd = right;
+  for(var i=left;i<right;i++){
+    if(items[left] < items[pivotInd]){
+      swap(items, left, i);
+      left++;
+    }
+  };
+  swap(items, pivotInd, left);
+  return left;
+};
+
 function processData(input) {
     var arr = input.split('\n');
     var numItems = parseInt(arr.shift());
 
-    function qsort(items, left, right){
-      if(right - left <= 1){
-        return;
-      }
-      var pivot = partition(items, left, right);
-      qsort(items, left, pivot);
-      qsort(items, pivot+1, right);
-      return items;
-    };
-
-    function partition(items, left, right){
-      var leftPoint = left;
-      var rightPoint = right - 1;
-      while(rightPoint > leftPoint){
-         if(items[rightPoint] < items[right]){
-          if(items[leftPoint] > items[right]){
-            var temp = items[rightPoint];
-            items[rightPoint] = items[leftPoint];
-            items[leftPoint] = temp;
-            rightPoint --;
-            leftPoint ++;
-          }else{
-            leftPoint ++;
-          }
-         }else{
-          rightPoint ++;
-         }
-      };
-     var temp = items[rightPoint];
-     items[rightPoint] = items[right];
-     items[right] = temp;
-     return rightPoint;
-    };
-
     return qsort(items, left, right);
 };
+var randArr = [];
+for(var i=0;i<10;i++){
+  randArr.push(Math.floor(Math.random() * 100));
+}
+console.log(randArr);
+console.log(qsort(randArr, 0, randArr.length-1))
