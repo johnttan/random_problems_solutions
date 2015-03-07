@@ -1,7 +1,7 @@
 function processData(input) {
-    var countTable = {};
+    var countTable = [];
     var max = 0;
-    input = input.split('\n')
+    input = input.split('\n');
     input = input.map(function(el, ind){
         if(ind > 0) {
             var elAr = el.split(' ');
@@ -14,15 +14,14 @@ function processData(input) {
                 max = elAr[0];
             }
             if(ind < input.length / 2){
-                elAr[2] = "first";
+                elAr[2] = true;
             }else{
-                elAr[2] = "second";
+                elAr[2] = false;
             }
           return elAr
         }
 
     });
-    console.log(input)
     var subTotal = 0;
     for(var i=0;i<=max;i++){
         var oldCount = countTable[i];
@@ -37,9 +36,8 @@ function processData(input) {
         }
 
     })
-
     results.forEach(function(el, ind){
-        if(el[2] === "first"){
+        if(el[2]){
             process.stdout.write('-');
         }else{
             process.stdout.write(el[1]);
