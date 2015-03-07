@@ -3,7 +3,7 @@ function qsort(items, left, right){
     return;
   }
   var pivot = partition(items, left, right);
-  qsort(items, left, pivot-1);
+  qsort(items, left, pivot);
   qsort(items, pivot, right);
   return items;
 };
