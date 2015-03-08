@@ -1,10 +1,10 @@
 function qsort(items, left, right){
-  if((right - left) <= 1){
+  if((right - left) < 1){
     return;
   }
-  var pivot = partition(items, left, right);
-  qsort(items, left, pivot);
-  qsort(items, pivot, right);
+  var pivot = partitionOne(items, left, right);
+  qsort(items, left, pivot-1);
+  qsort(items, pivot+1, right);
   return items;
 };
 
@@ -16,20 +16,21 @@ function swap(items, left, right){
 
 function partitionOne(items, left, right){
   var pivotInd = right;
-  for(var i=left;i<right;i++){
-    if(items[left] < items[pivotInd]){
+  for(var i=left;i<=right;i++){
+    if(items[i] < items[pivotInd]){
       swap(items, left, i);
       left++;
     }
   };
   swap(items, pivotInd, left);
+  console.log(items.join(' '))
   return left;
 };
 
 function partitionTwo(items, left, right){
   var pivotInd = right;
-  for(var i=left;i<right;i++){
-    if(items[left] < items[pivotInd]){
+  for(var i=left;i<=right;i++){
+    if(items[i] < items[pivotInd]){
       swap(items, left, i);
       left++;
     }
@@ -41,8 +42,8 @@ function partitionTwo(items, left, right){
 function processData(input) {
     var arr = input.split('\n');
     var numItems = parseInt(arr.shift());
-
-    return qsort(items, left, right);
+    arr = arr[0].split(' ').map(function(el){return parseInt(el)})
+    return qsort(arr, 0, arr.length-1);
 };
 var randArr = [];
 for(var i=0;i<10;i++){
