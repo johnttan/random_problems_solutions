@@ -33,6 +33,28 @@ function processData(input) {
 
   var stack = [];
   stack.push(root);
+  var pairTable = {};
+
+  var secondTime = {};
+  while(stack.length > 0){
+    var current = stack.pop();
+
+    if(secondTime[current.val]){
+      for(var ancestor in pairTable){
+        if(Math.abs(ancestor - current.val) <= test){
+          pairCount ++;
+        }
+      };
+      // Delete from pairTable, done with this node.
+      delete pairTable[current.val]
+    }else{
+      secondTime[current.val] = true;
+      stack.push(current);
+      current.children.forEach(function(child){
+        stack.push(child);
+      })
+    }
+  }
 
   console.log(stack)
 }
