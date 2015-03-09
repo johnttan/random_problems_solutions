@@ -38,25 +38,26 @@ function processData(input) {
   var secondTime = {};
   while(stack.length > 0){
     var current = stack.pop();
+    pairTable[current.val] = true;
 
     if(secondTime[current.val]){
+      // Remove self first
+      delete pairTable[current.val]
       for(var ancestor in pairTable){
         if(Math.abs(ancestor - current.val) <= test){
           pairCount ++;
         }
       };
       // Delete from pairTable, done with this node.
-      delete pairTable[current.val]
     }else{
       secondTime[current.val] = true;
       stack.push(current);
       current.children.forEach(function(child){
-        stack.push(child);
+        stack.push(treeTable[child]);
       })
     }
   }
-
-  console.log(stack)
+  console.log(pairCount)
 }
 
 processData('5 2\n\
