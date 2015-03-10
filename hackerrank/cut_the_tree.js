@@ -38,8 +38,24 @@ function processData(input) {
     }else{
       current.children.forEach(function(v){
         current.sum += v.sum;
-      })
+      });
     }
+  };
 
+  var stack = [];
+  stack.push(root);
+  var min = Number.POSITIVE_INFINITY;
+
+  while(stack.length > 0){
+    var current = stack.pop();
+    if(current.parent){
+      var subOne = current.sum;
+      var subTwo = root.sum - subOne;
+      var diff = Math.abs(subOne - subTwo);
+      if(diff < min){
+        min = diff;
+      }
+    }
   }
+  console.log(diff);
 }
