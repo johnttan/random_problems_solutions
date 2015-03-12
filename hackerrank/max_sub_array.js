@@ -20,7 +20,16 @@ function processData(input) {
         cSum = currentSum
       };
     });
-
+    // If all negatives
+    if(cSum === 0){
+      cSum = arr[0];
+      for(var i=1;i<arr.length;i++){
+        if(arr[i] > cSum){
+          cSum = arr[i]
+        }
+      }
+      ncSum = cSum;
+    }
     console.log(cSum, ncSum);
   })
 }
