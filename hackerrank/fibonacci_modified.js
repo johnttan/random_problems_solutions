@@ -13,6 +13,13 @@ function processData(input) {
     minusTwo = temp;
     n ++;
   };
-
-  console.log(minusOne.toFixed());
+  var results = "";
+  var tempOne = minusOne
+  while(tempOne > 0){
+    results += tempOne % 10;
+    tempOne = Math.floor(tempOne / 10);
+  }
+  console.log(results.split('').reverse().join(''), minusOne);
 }
+
+processData('0 1 10');
