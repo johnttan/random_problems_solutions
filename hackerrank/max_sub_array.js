@@ -1,10 +1,9 @@
 function processData(input) {
   input = input.split('\n');
   var arrays = [];
-  for(var i=1;i<input.length;i+=2){
+  for(var i=2;i<input.length;i+=2){
     arrays.push(input[i].split(' ').map(function(el){return parseInt(el)}))
   };
-
   arrays.forEach(function(arr){
     var cSum = 0;
     var ncSum = 0;
