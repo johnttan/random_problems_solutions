@@ -15,5 +15,9 @@ function generateSubPalindromes(seq){
         palindromes.push([i, j])
       }
     }
-  }
+  };
+  return palindromes;
 }
+
+
+console.log(generateSubPalindromes(["a", "a"]))
