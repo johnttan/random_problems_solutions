@@ -14,5 +14,5 @@ function processData(input) {
     n ++;
   };
 
-  console.log(minusOne);
+  console.log(minusOne.toFixed());
 }
