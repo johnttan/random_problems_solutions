@@ -54,5 +54,8 @@ function LCS(L1, L2){
 // console.log(LCS(testOne, testTwo));
 
 function processData(input) {
-
+  input = input.split('\n');
+  var arrayOne = input[1].split(' ');
+  var arrayTwo = input[2].split(' ');
+  console.log(LCS(arrayOne, arrayTwo));
 }
