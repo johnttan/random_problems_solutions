@@ -2,6 +2,7 @@ function generateArranges(N){
   var table = [1, 1, 1, 1];
   var counter = 4;
   while(counter <= N){
+    console.log(table)
     table[counter] = table[counter-1] + table[counter-4];
     counter ++;
   }
@@ -47,30 +48,31 @@ function processData(input) {
     console.log(numPrimesEras(generateArranges(parseInt(input[i]))))
   }
 }
+// console.log(generateArranges(16));
 
 // processData("2\n\
 // 1\n\
 // 7")
-var start = Date.now();
-processData("19\n\
-16\n\
-8\n\
-40\n\
-24\n\
-26\n\
-17\n\
-39\n\
-23\n\
-40\n\
-39\n\
-1\n\
-24\n\
-21\n\
-39\n\
-34\n\
-37\n\
-9\n\
-28\n\
-6")
-var end = Date.now();
-console.log("TIME:", end - start)
+// var start = Date.now();
+// processData("19\n\
+// 16\n\
+// 8\n\
+// 40\n\
+// 24\n\
+// 26\n\
+// 17\n\
+// 39\n\
+// 23\n\
+// 40\n\
+// 39\n\
+// 1\n\
+// 24\n\
+// 21\n\
+// 39\n\
+// 34\n\
+// 37\n\
+// 9\n\
+// 28\n\
+// 6")
+// var end = Date.now();
+// console.log("TIME:", end - start)
