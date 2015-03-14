@@ -23,7 +23,6 @@ function LCS(L1, L2){
         table[i][j].value = table[xInd][yInd].value + 1;
         table[i][j].decision = L1[xInd];
         table[i][j].previous = table[xInd][yInd];
-
       }else{
         if(table[i][j-1].value > table[i-1][j].value){
           table[i][j].value = table[i][j-1].value;
