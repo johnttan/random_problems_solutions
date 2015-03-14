@@ -2,10 +2,11 @@ function LPS(someString){
   var table = [];
   for(var i=0;i<someString.length;i++){
     var newA = [];
+    table[i] = newA;
   }
 
-  for(var i=0;i<table.length;i++){
-    for(var j=table.length-1;j>=0;j--){
+  for(var j=0;j<table.length;j++){
+    for(var i=table.length-1;i>=0;i--){
       if(i > j){
         table[i][j] = 0
       }
@@ -23,4 +24,11 @@ function LPS(someString){
 }
 
 var test = LPS("eeeg");
-console.log(test);
+var table = "";
+for(var i=0;i<test.length;i++){
+  for(var j=0;j<test[i].length;j++){
+    table += test[i][j].toString() + ' ';
+  }
+  table += '\n'
+}
+console.log(table);
