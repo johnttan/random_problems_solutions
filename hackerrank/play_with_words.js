@@ -23,7 +23,6 @@ function LPS(someString){
         }else{
           table[i][j] = Math.max(table[i+1][j], table[i][j-1])
         }
-        console.log(table[i+1][j], table[i, j-1])
       }
     }
   }
@@ -31,7 +30,25 @@ function LPS(someString){
 }
 
 
-
+function bestFactor(someString){
+  var table = LPS(someString);
+  var maxFactor = 0;
+  for(var i=0;i<someString.length;i++){
+    var factor;
+    if(i === 0 || i === someString.length -1){
+      factor = table[0][someString.length-1]
+      if(factor > maxFactor){
+        maxFactor = factor
+      }
+    }else{
+      factor = table[0][i] * table[i+1][someString.length-1]
+      if(factor > maxFactor){
+        maxFactor = factor
+      }
+    }
+  }
+  return maxFactor;
+}
 // var test = LPS("eeeg");
 // var table = "";
 // for(var j=0;j<test.length;j++){
@@ -41,3 +58,5 @@ function LPS(someString){
 //   table += '\n'
 // }
 // console.log(table);
+
+// console.log(bestFactor("eeegeeksforskeeggeeks"))
