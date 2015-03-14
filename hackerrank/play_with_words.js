@@ -14,21 +14,30 @@ function LPS(someString){
         table[i][j] = 1
       }
       else if (someString[i] === someString[j]){
-        table[i][j] = table[i+1][j-1] + 1;
+        table[i][j] = table[i+1][j-1] + 2;
       }else{
-        table[i][j] = Math.max(table[i+1, j], table[i, j-1])
+        if(i === table.length-1){
+          table[i][j] = table[i, j-1]
+        }else if(j === 0){
+          table[i][j] = table[i+1, j]
+        }else{
+          table[i][j] = Math.max(table[i+1][j], table[i][j-1])
+        }
+        console.log(table[i+1][j], table[i, j-1])
       }
     }
   }
   return table;
 }
 
-var test = LPS("eeeg");
-var table = "";
-for(var i=0;i<test.length;i++){
-  for(var j=0;j<test[i].length;j++){
-    table += test[i][j].toString() + ' ';
-  }
-  table += '\n'
-}
-console.log(table);
+
+
+// var test = LPS("eeeg");
+// var table = "";
+// for(var j=0;j<test.length;j++){
+//   for(var i=0;i<test[j].length;i++){
+//     table += test[i][j].toString() + ' ';
+//   }
+//   table += '\n'
+// }
+// console.log(table);
