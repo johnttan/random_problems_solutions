@@ -1,6 +1,6 @@
 // The overall strategy involves using the base LPS dynamic programming solution with recurrece relations:
 /*
-for string S:
+for string S, with subseq starting index i and ending index j:
 LPS(i, j) = (
   if S[i] == S[j]:
     return LPS(i+1, j-1)
