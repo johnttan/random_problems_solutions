@@ -1,5 +1,17 @@
-
-// The strategy to save space for this problem is to only save the previous row and the current row, as the recurrence relation only depends on i+1 and j-1
+// The overall strategy involves using the base LPS dynamic programming solution with recurrece relations:
+/*
+for string S:
+LPS(i, j) = (
+  if S[i] == S[j]:
+    return LPS(i+1, j-1)
+  else:
+    return Max(LPS(i+1, j), LPS(i, j-1))
+)
+*/
+// This is a variant of the longest common subsequence problem. The first case is due to the fact that if the prefix and suffix are the same, then
+// the longest palindrome subsequence is the LPS of the inner sequence + 2.
+// In the second case, if the prefix and suffix are not the same, we can reduce the problem space by concluding that either the LPS contains the prefix or it contains the suffix, and taking the max of both cases.
+// The strategy to save space for the specific problem of finding the largest possible factor of non-overlapping LPSs problem is to only save the previous row and the current row, as the recurrence relation only depends on i+1 and j-1
 // You also have to save the values in the table associated with the range starting at 0, ending at i and starting at i, ending in 0. This results in 2 arrays of length N each.
 //This only takes O(N) space vs the O(N^2) space of constructing the full table.
 function LPS(someString){
