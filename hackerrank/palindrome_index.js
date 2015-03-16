@@ -4,7 +4,7 @@ function processData(input) {
     for(var j=0;j<input[i].length;j++){
       var str = input[i];
       if(str[j] !== str[str.length - j - 1]){
-        if(str[j] === str[str.length-j -2]){
+        if(str[j] === str[str.length-j -2] && str[j+1] === str[str.length-j-3]){
           console.log(str.length - j - 1);
           break;
         }else{
@@ -24,3 +24,17 @@ function processData(input) {
 // aaab\n\
 // baa\n\
 // aaa")
+
+// processData("10\n\
+// quyjjdcgsvvsgcdjjyq\n\
+// hgygsvlfwcwnswtuhmyaljkqlqjjqlqkjlaymhutwsnwcflvsgygh\n\
+// fgnfnidynhxebxxxfmxixhsruldhsaobhlcggchboashdlurshxixmfxxxbexhnydinfngf\n\
+// bsyhvwfuesumsehmytqioswvpcbxyolapfywdxeacyuruybhbwxjmrrmjxwbhbyuruycaexdwyfpaloyxbcpwsoiqtymhesmuseufwvhysb\n\
+// fvyqxqxynewuebtcuqdwyetyqqisappmunmnldmkttkmdlnmnumppasiqyteywdquctbeuwenyxqxqyvf\n\
+// mmbiefhflbeckaecprwfgmqlydfroxrblulpasumubqhhbvlqpixvvxipqlvbhqbumusaplulbrxorfdylqmgfwrpceakceblfhfeibmm\n\
+// tpqknkmbgasitnwqrqasvolmevkasccsakvemlosaqrqwntisagbmknkqpt\n\
+// lhrxvssvxrhl\n\
+// prcoitfiptvcxrvoalqmfpnqyhrubxspplrftomfehbbhefmotfrlppsxburhyqnpfmqlaorxcvtpiftiocrp\n\
+// kjowoemiduaaxasnqghxbxkiccikxbxhgqnsaxaaudimeowojk")
+
+// processData("10\nhgygsvlfwcwnswtuhmyaljkqlqjjqlqkjlaymhutwsnwcflvsgygh")
