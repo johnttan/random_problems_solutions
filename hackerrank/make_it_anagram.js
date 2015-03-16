@@ -13,5 +13,8 @@ function processData(input) {
   console.log(input[0].length - common + input[1].length - common);
 }
 
-processData("cde\n\
-abc")
+// processData("cde\n\
+// abc")
+
+processData("fcrxzwscanmligyxyvym\n\
+jxwtrhvujlmrpdoqbisbwhmgpmeoke")
