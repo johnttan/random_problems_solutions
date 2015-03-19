@@ -4,7 +4,8 @@ function findMaxLength(i, j, maxDiffs, stringOne, stringTwo){
   var length = 0;
   while(true){
     if(i+length > stringOne.length || j+length > stringTwo.length){
-      return Math.max(maxLength, length);
+      maxLength = Math.max(maxLength, length);
+      break;
     }
 
     if(stringOne[i+length] !== stringTwo[j+length]){
@@ -24,6 +25,7 @@ function findMaxLength(i, j, maxDiffs, stringOne, stringTwo){
       length ++;
     }
   }
+  return maxLength;
 }
 
 function processData(input) {
@@ -42,7 +44,13 @@ function processData(input) {
 }
 
 
-processData("3\n\
-2 tabriz torino\n\
-0 abacba abcaba\n\
-3 helloworld yellomarin")
+// processData("3\n\
+// 2 tabriz torino\n\
+// 0 abacba abcaba\n\
+// // 3 helloworld yellomarin")
+
+// var fs = require('fs');
+
+// var data = fs.readFileSync('substring_diff_test.txt');
+// processData(String(data));
+
