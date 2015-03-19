@@ -2,36 +2,29 @@ function findMaxLength(i, j, maxDiffs, stringOne, stringTwo){
   var totalDiffs = 0;
   var maxLength = 0;
   var length = 0;
-  console.log("STRING", stringOne)
   while(true){
     if(i > stringOne.length - 1 || j > stringTwo.length -1){
-      // console.log("returning", i, j, stringOne.length)
       return Math.max(maxLength, length);
     }
 
     if(stringOne[i] !== stringTwo[j]){
       totalDiffs ++;
     }
-    console.log(i, j, totalDiffs)
     if(totalDiffs > maxDiffs){
       maxLength = Math.max(length, maxLength)
       while(stringOne[i] === stringTwo[j]){
-        // console.log('contracting', i, j)
-        // if(i > stringOne.length - 1 || j > stringTwo.length -1){
-        //   return Math.max(maxLength, length);
-        // }
         i ++;
         j ++;
         length --;
       }
       totalDiffs --;
+      // Need to subtract length because we are moving up to i+1, j+1
+      length --;
     }else{
       length ++;
     }
     i++;
     j++;
-    console.log(i, j, totalDiffs)
-
   }
 }
 
