@@ -3,11 +3,11 @@ function findMaxLength(i, j, maxDiffs, stringOne, stringTwo){
   var maxLength = 0;
   var length = 0;
   while(true){
-    if(i > stringOne.length - 1 || j > stringTwo.length -1){
+    if(i+length > stringOne.length || j+length > stringTwo.length){
       return Math.max(maxLength, length);
     }
 
-    if(stringOne[i] !== stringTwo[j]){
+    if(stringOne[i+length] !== stringTwo[j+length]){
       totalDiffs ++;
     }
     if(totalDiffs > maxDiffs){
@@ -18,13 +18,11 @@ function findMaxLength(i, j, maxDiffs, stringOne, stringTwo){
         length --;
       }
       totalDiffs --;
-      // Need to subtract length because we are moving up to i+1, j+1
-      length --;
+      i++;
+      j++;
     }else{
       length ++;
     }
-    i++;
-    j++;
   }
 }
 
