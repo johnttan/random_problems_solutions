@@ -30,7 +30,7 @@ function findMaxLength(i, j, maxDiffs, stringOne, stringTwo){
 
 function processData(input) {
   input = input.split('\n');
-  for(var i=1;i<input.length;i++){
+  for(var i=0;i<input.length;i++){
     input[i] = input[i].split(' ');
     maxDiffs = parseInt(input[i][0]);
     strOne = input[i][1];
@@ -49,8 +49,8 @@ function processData(input) {
 // 0 abacba abcaba\n\
 // // 3 helloworld yellomarin")
 
-// var fs = require('fs');
+var fs = require('fs');
 
-// var data = fs.readFileSync('substring_diff_test.txt');
-// processData(String(data));
+var data = fs.readFileSync('substring_diff_test.txt');
+processData(String(data));
 
