@@ -21,7 +21,6 @@ function processData(input) {
 
   while(dfsStack.length > 0){
     var current = dfsStack.pop();
-    console.log(current)
     if(!visited[current]){
       dfsStack.push(current);
       visited[current] = true;
