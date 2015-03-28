@@ -18,7 +18,7 @@ function processData(input) {
   var dfsStack = [];
 
   dfsStack.push("1");
-
+// Run DFS across graph, store size of subtree at each node.
   while(dfsStack.length > 0){
     var current = dfsStack.pop();
     if(!visited[current]){
@@ -42,7 +42,9 @@ function processData(input) {
   };
 
   var edgeCount = 0;
-
+// Count all subtrees with even size, as they are a subtree that form a component with an even number of nodes.
+// Important fact is that subtracting an even component from a larger even component results in 2 event components, thus we are safe in assuming that an even noded
+// subtree can be removed optimally.
   for(var v in size){
     if(size[v] % 2 === 0 && v !== "1"){
       edgeCount ++;
