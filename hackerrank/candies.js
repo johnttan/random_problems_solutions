@@ -11,10 +11,11 @@ function processData(input) {
 
   for(var j=0;j<children.length;j++){
     if(children[j] > children[j+1] && candies[j] <= candies[j+1]){
-      candies[j] ++;
+      candies[j] = candies[j+1] + 1;
     }
+    // console.log(j, children[j], children[j-1], 'candies', candies[j], candies[j-1]);
     if(j > 0 && children[j] > children[j-1] && candies[j] <= candies[j-1]){
-      candies[j] ++;
+      candies[j] = candies[j-1] + 1;
     }
   }
   console.log(candies.reduce(function(total, current){
@@ -22,7 +23,14 @@ function processData(input) {
   }))
 }
 
-processData('3\n\
-1\n\
+processData('10\n\
 2\n\
-2');
+4\n\
+2\n\
+6\n\
+1\n\
+7\n\
+8\n\
+9\n\
+2\n\
+1');
